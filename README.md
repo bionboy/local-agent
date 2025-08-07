@@ -1,3 +1,10 @@
+> [!WARNING]
+> This is a work in progress.
+>
+> - I am using this repo currently as a playground for building agents, learning LangChain, etc.
+> - Eventually this repo (or another) might house my local model based agent.
+> - right now, the content below is temporary and mostly generated.
+
 # Local TypeScript AI Agent
 
 A local AI agent built with TypeScript, using Ollama (GPT-OSS 20B model), LangChain.js, and web search capabilities.
