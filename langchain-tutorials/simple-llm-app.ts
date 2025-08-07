@@ -1,3 +1,5 @@
+// https://js.langchain.com/docs/tutorials/llm_chain/
+
 import dotenv from "dotenv";
 dotenv.config({ path: ".env.local" });
 

@@ -8,7 +8,8 @@
     "start": "node simple-agent.ts",
     "agent": "node agent.ts",
     "interactive": "node interactive-agent.ts",
-    "lc1": "node langchain-tutorials/simple-llm-app.ts"
+    "simple-llm": "node langchain-tutorials/simple-llm-app.ts",
+    "chatbot": "node langchain-tutorials/chatbot.ts"
   },
   "keywords": [],
   "author": "",
@@ -17,11 +18,14 @@
   "dependencies": {
     "@langchain/community": "^0.3.50",
     "@langchain/core": "^0.3.67",
+    "@langchain/langgraph": "^0.4.3",
     "@langchain/ollama": "^0.2.3",
+    "@types/uuid": "^10.0.0",
     "dotenv": "^17.2.1",
     "duck-duck-scrape": "^2.2.7",
     "duckduckgo-search": "^1.0.7",
-    "langchain": "^0.3.30"
+    "langchain": "^0.3.30",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@types/node": "^24.2.0",
