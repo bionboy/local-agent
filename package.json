@@ -1,0 +1,29 @@
+{
+  "name": "local-agent",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node simple-agent.ts",
+    "agent": "node agent.ts",
+    "interactive": "node interactive-agent.ts",
+    "first": "node my-first-attempt.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.13.1",
+  "dependencies": {
+    "@langchain/community": "^0.3.50",
+    "@langchain/core": "^0.3.67",
+    "@langchain/ollama": "^0.2.3",
+    "duck-duck-scrape": "^2.2.7",
+    "duckduckgo-search": "^1.0.7",
+    "langchain": "^0.3.30"
+  },
+  "devDependencies": {
+    "@types/node": "^24.2.0",
+    "typescript": "^5.9.2"
+  }
+}
