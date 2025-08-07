@@ -8,7 +8,7 @@
     "start": "node simple-agent.ts",
     "agent": "node agent.ts",
     "interactive": "node interactive-agent.ts",
-    "first": "node my-first-attempt.ts"
+    "lc1": "node langchain-tutorials/simple-llm-app.ts"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +18,7 @@
     "@langchain/community": "^0.3.50",
     "@langchain/core": "^0.3.67",
     "@langchain/ollama": "^0.2.3",
+    "dotenv": "^17.2.1",
     "duck-duck-scrape": "^2.2.7",
     "duckduckgo-search": "^1.0.7",
     "langchain": "^0.3.30"
