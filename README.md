@@ -1,9 +1,12 @@
+[langsmith](https://smith.langchain.com/o/c67b5826-3c42-4cf9-a73d-2a36f08190c3/projects/p/5b31bc60-1d03-4fb8-b031-4542031f7af1)
 > [!WARNING]
 > This is a work in progress.
 >
 > - I am using this repo currently as a playground for building agents, learning LangChain, etc.
 > - Eventually this repo (or another) might house my local model based agent.
 > - right now, the content below is temporary and mostly generated.
+
+
 
 # Local TypeScript AI Agent
 
