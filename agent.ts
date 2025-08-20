@@ -1,6 +1,7 @@
 import { AgentExecutor, createStructuredChatAgent } from "langchain/agents";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
-import { model, search } from "./model.ts";
+import { model } from "./lib/model.ts";
+import { search } from "./lib/tools.ts";
 
 async function main() {
   // Create the prompt template

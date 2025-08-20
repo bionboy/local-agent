@@ -1,6 +1,7 @@
 import { HumanMessage } from "@langchain/core/messages";
 import * as readline from "readline";
-import { model, search } from "./model";
+import { model } from "./lib/model.ts";
+import { search } from "./lib/tools.ts";
 
 async function simpleAgent(query: string) {
   console.log(`User query: ${query}`);

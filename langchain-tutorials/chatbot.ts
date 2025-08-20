@@ -11,7 +11,7 @@ import {
   Annotation,
 } from "@langchain/langgraph";
 import { v4 as uuidv4 } from "uuid";
-import { model } from "../model.ts";
+import { model } from "../lib/model.ts";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
 
 const config = { configurable: { thread_id: uuidv4() } };
