@@ -1,7 +1,5 @@
 // https://js.langchain.com/docs/tutorials/chatbot/
 
-// continue from here: https://js.langchain.com/docs/tutorials/chatbot/#managing-conversation-history
-
 import {
   START,
   END,
@@ -10,11 +8,24 @@ import {
   MemorySaver,
   Annotation,
 } from "@langchain/langgraph";
+import { HumanMessage, trimMessages } from "@langchain/core/messages";
 import { v4 as uuidv4 } from "uuid";
 import { model } from "../lib/model.ts";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
 
+import dotenv from "dotenv";
+dotenv.config({ path: ".env.local" });
+
 const config = { configurable: { thread_id: uuidv4() } };
+
+const trimmer = trimMessages({
+  maxTokens: 10,
+  strategy: "last",
+  tokenCounter: (msgs) => msgs.length,
+  includeSystem: true,
+  allowPartial: false,
+  startOn: "human",
+});
 
 const createApp = () => {
   const promptTemplate = ChatPromptTemplate.fromMessages([
@@ -31,7 +42,13 @@ const createApp = () => {
   });
 
   const callModel = async (state: typeof GraphAnnotation.State) => {
-    const prompt = await promptTemplate.invoke(state);
+    // Trim messages to manage/reduce context window size
+    const trimmedMessages = await trimmer.invoke(state.messages);
+
+    const prompt = await promptTemplate.invoke({
+      messages: trimmedMessages,
+      language: state.language,
+    });
     const response = await model.invoke(prompt);
     // Update message history with response:
     return { messages: [response] };
@@ -49,33 +66,29 @@ const createApp = () => {
 
 const app = createApp();
 
-const output = await app.invoke(
+await app.invoke(
   {
-    messages: {
-      role: "user",
-      content: "Hi! I'm Bob.",
-    },
+    messages: [new HumanMessage("Hi! I'm Bob.")],
     language: "english",
   },
   config
 );
-console.log("Output 1:");
-console.log(output.messages[output.messages.length - 1].content);
 
-const output2 = await app.invoke(
+await app.invoke(
   {
-    messages: {
-      role: "user",
-      content: "What's my name?",
-    },
+    messages: [new HumanMessage("What's my name?")],
     language: "french",
   },
   config
 );
-console.log("Output 2:");
-console.log(output2.messages[output2.messages.length - 1].content);
+
+const output3 = await app.invoke(
+  {
+    messages: [new HumanMessage("What's my name?")],
+    language: "english",
+  },
+  config
+);
 
 console.log("all messages:");
-console.log(output2.messages.map((m) => `>>> ${m.content}`));
-
-// Add memory
+console.log(output3.messages.map((m) => `>>> ${m.content}`));

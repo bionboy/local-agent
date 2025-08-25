@@ -25,7 +25,3 @@ const messages = [
 
 const x = await trimmer.invoke(messages);
 console.log(x);
-
-const y = new HumanMessage("asdf");
-// y.toJSON();
-console.log(y.toJSON());
