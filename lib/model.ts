@@ -1,4 +1,5 @@
 import { ChatOllama } from "@langchain/ollama";
+// import { ChatOpenAI } from "@langchain/openai";
 
 // Shared Ollama LLM configuration
 export const model = new ChatOllama({

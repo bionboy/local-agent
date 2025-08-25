@@ -23,6 +23,6 @@
     "erasableSyntaxOnly": true,
     "verbatimModuleSyntax": true
   },
-  "include": ["**/*.ts"],
+  "include": ["**/*.[m]?ts"],
   "exclude": ["node_modules", "dist"]
 }
