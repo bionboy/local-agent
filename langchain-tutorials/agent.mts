@@ -8,6 +8,7 @@ import { searchTavily } from "../lib/tools.ts";
 import { MemorySaver } from "@langchain/langgraph";
 import { HumanMessage } from "@langchain/core/messages";
 import { createReactAgent } from "@langchain/langgraph/prebuilt";
+import { lastMessage } from "../lib/utils.ts";
 
 // Initialize memory to persist state between graph runs
 const agentCheckpointer = new MemorySaver();
@@ -25,11 +26,11 @@ const agentFinalState = await agent.invoke(
   { configurable: { thread_id: "42" } }
 );
 
-console.log(agentFinalState.messages[agentFinalState.messages.length - 1].content);
+console.log(lastMessage(agentFinalState));
 
 const agentNextState = await agent.invoke(
   { messages: [new HumanMessage("what about ny")] },
   { configurable: { thread_id: "42" } }
 );
 
-console.log(agentNextState.messages[agentNextState.messages.length - 1].content);
+console.log(lastMessage(agentNextState));
